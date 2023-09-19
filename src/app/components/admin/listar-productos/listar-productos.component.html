@@ -1,0 +1,28 @@
+<h4 class="text-center">Productos</h4>
+<hr>
+<table class="table table-striped align-middle text-center" *ngIf="productos.length > 0">
+    <thead>
+        <tr>
+            <th class="col-lg-1 th">#</th>
+            <th class="col-lg-3 th">Descripción</th>
+            <th class="col-lg-2 th">Precio</th>
+            <th class="col-lg-2 th">Disponibilidad</th>
+            <th class="col-lg-2 th"></th>
+            <th class="col-lg-2 th"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let p of productos">
+            <th scope="row">{{ p.id }}</th>
+            <td>{{ p.descripcion }}</td>
+            <td>{{ p.precio }}</td>
+            <td>{{ p.disponibilidad }}</td>
+            <td>
+                <button class="btn btn-secondary" (click)="seleccionar(p)">Seleccionar</button>
+            </td>
+            <td>
+                <button class="btn btn-danger" (click)="eliminar(p.id)">Eliminar</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

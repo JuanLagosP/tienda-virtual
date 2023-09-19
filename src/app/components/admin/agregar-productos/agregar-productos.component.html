@@ -1,0 +1,25 @@
+<h4 class="text-center">Registro de Productos</h4>
+<hr>
+<div class="text-center mb-3" *ngIf="formIncorrecto">
+    <span class="badge bg-danger error-text">{{ textoIncorrecto | uppercase }}</span>
+</div>
+<div class="form-group mb-3">
+    <label for="descripcion" class="mb-1">Descripción</label>
+    <input type="text" id="descripcion" placeholder="Ej: laptop, mouse, etc" class="form-control form-control-lg" [(ngModel)]="descripcion">
+</div>
+<div class="form-group mb-3">
+    <label for="precio" class="mb-1">Precio</label>
+    <input type="number" id="precio" placeholder="0.0" class="form-control form-control-lg" [(ngModel)]="precio">
+</div>
+<div class="form-group mb-3">
+    <label for="disp" class="mb-1">Disponibilidad</label>
+    <input type="number" id="disp" placeholder="0" class="form-control form-control-lg" [(ngModel)]="disponibilidad">
+</div>
+<div class="form-group mb-3">
+    <label for="url" class="mb-1">Imagen (URL)</label>
+    <input type="text" id="url" placeholder="https://www.example.com" class="form-control form-control-lg" [(ngModel)]="url">
+</div>
+<div class="d-flex justify-content-between">
+    <button class="btn btn-primary btn-block flex-grow-1" *ngIf="!prodSeleccionado" (click)="agregarProducto()">Agregar</button>
+    <button class="btn btn-danger btn-block flex-grow-1"  *ngIf="prodSeleccionado" (click)="modificarProducto()">Modificar</button>
+</div>

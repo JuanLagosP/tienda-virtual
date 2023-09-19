@@ -1,0 +1,46 @@
+.title {
+    width: 100%;
+    font-family: 'Poppins', sans-serif;
+    text-transform: uppercase;
+    background-color: #F15152;
+    color: #F4F3EE;
+    padding: 2rem;
+}
+
+.counter {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.2rem;
+    color: white;
+    background-color: #F15152;
+}
+
+.prod-btn {
+    width: 300px;
+    height: 250px;
+}
+
+.prod-img {
+    width: 250px;
+    height: 150px;
+}
+
+.decrement, .increment, .add-cart {
+    width: 3rem;
+    height: 3rem;
+}
+
+.decrement {
+    border-radius: 5px 0 0 5px;
+}
+
+.increment {
+    border-radius: 0 5px 5px 0;
+}
+
+.row {
+    flex-wrap: wrap;
+}

@@ -1,0 +1,41 @@
+<h2 class="text-center title">Tienda</h2>
+<nav class="navbar navbar-expand-lg bg-primary">
+    <div class="container-fluid">
+        <div class="container d-flex justify-content-end">
+            <button class="btn btn-secondary" style="margin-right: 10px;" (click)="carrito">
+                <i class="bi bi-cart"></i>
+            </button>
+            <button class="btn btn-secondary" (click)="admin()">
+                <i class="bi bi-person-circle"></i>
+            </button>
+        </div>
+    </div>
+</nav>
+<div class="container mt-4">
+    <div class="row flex-wrap align-items-center" *ngFor=" let p of getProductos()">
+        <div class="col-lg-4">
+            <div class="card">
+                <button class="btn" (click)="prodSeleccionado(p)">
+                    <img [src]="p.url" [alt]="p.descripcion" class="card-img-top">
+                </button>
+                <div class="card-body">
+                    <h5 class="card-title text-center">{{ p.descripcion }}</h5>
+                    <p class="card-text text-center">${{ p.precio }}</p>
+                    <div class="container d-flex justify-content-center align-items-center mt-2" *ngIf="productos.get(p)">
+                        <button class="btn btn-primary decrement" (click)="disminuir(p)">
+                            <i class="bi bi-dash-lg"></i>
+                        </button>
+                        <div class="text-center counter">{{ contProducto }}</div>
+                        <button class="btn btn-primary increment" (click)="incrementar(p)">
+                            <i class="bi bi-plus-lg"></i>
+                        </button>
+                        <button class="btn btn-primary add-cart" style="margin-left: 5px;" title="Agregar al carrito"
+                        (click)="agregarAlCarrito(p)">
+                            <i class="bi bi-cart-plus"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

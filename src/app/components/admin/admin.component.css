@@ -1,0 +1,8 @@
+.title {
+    width: 100%;
+    font-family: 'Poppins', sans-serif;
+    text-transform: uppercase;
+    background-color: #F15152;
+    color: #F4F3EE;
+    padding: 2rem;
+}
