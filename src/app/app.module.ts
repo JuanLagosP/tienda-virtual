@@ -9,7 +9,6 @@ import { AgregarProductosComponent } from './components/admin/agregar-productos/
 import { ListarProductosComponent } from './components/admin/listar-productos/listar-productos.component';
 import { TiendaComponent } from './components/tienda/tienda.component';
 import { CarritoComponent } from './components/carrito/carrito.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -24,7 +23,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

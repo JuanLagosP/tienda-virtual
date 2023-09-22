@@ -1,1 +1,86 @@
-<p>carrito works!</p>
+<h2 class="text-center title"> Carrito de Compras </h2>
+<nav class="navbar navbar-expand-lg bg-primary">
+    <div class="container-fluid">
+        <div class="container d-flex justify-content-end">
+            <button class="btn btn-secondary" style="margin-right: 10px;" (click)="tienda()">
+                <i class="bi bi-bag"></i> Tienda
+            </button>
+        </div>
+    </div>
+</nav>
+
+<div class="container d-flex justify-content-between">
+    <div class="col-lg-8" style="margin-right: 0.5rem;">
+        <div class="card mt-4">
+            <div class="card-body">
+                <table class="table align-middle text-center">
+                    <thead>
+                        <tr>
+                            <th class="col-lg-5 th">Producto</th>
+                            <th class="col-lg-2 th">Precio</th>
+                            <th class="col-lg-2 th">Cantidad</th>
+                            <th class="col-lg-2 th">Total</th>
+                            <th class="col-lg-1 th"></th>
+                        </tr>
+                    </thead>
+                    <tbody *ngIf="carrito.length > 0">
+                        <tr *ngFor="let p of carrito">
+                            <td>
+                                <div class="containe d-flex justify-content-center align-items-center">
+                                    <figure class="figure">
+                                        <img [src]="p.url" [alt]="p.descripcion" class="figure-img img-fluid product-img">
+                                    </figure>
+                                    <span>{{ p.descripcion }}</span>
+                                </div>
+                            </td>
+                            <td>${{ p.precio }}</td>
+                            <td>
+                                <div class="container d-flex justify-content-center">
+                                    <button class="decrement btn btn-primary">
+                                        <i class="bi bi-dash"></i>
+                                    </button>
+                                    <div class="prod-count text-center align-middle">
+                                        {{getCantDeProducto(p)}}
+                                    </div>
+                                    <button class="increment btn btn-primary">
+                                        <i class="bi bi-plus-lg"></i>
+                                    </button>
+                                </div>
+                            </td>
+                            <td>${{ p.precio }}</td>
+                            <td>
+                                <button class="btn btn-danger delete-btn" title="Quitar producto" (click)="quitarDelCarrito(p)">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="card-title text-center" *ngIf="carrito.length == 0">
+                    No hay productos agregados en el carrito
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4" style="margin-left: 0.5rem;">
+        <div class="card mt-4">
+            <div class="card-body">
+                <div class="card-title text-center">
+                    Resumen de Compra
+                    <hr>
+                </div>
+                <div class="container d-flex justify-content-between align-items-center mb-1" *ngFor="let p of carrito">
+                    <div>
+                        <span>{{ p.descripcion }}</span>
+                    </div>
+                    <div class="badge rounded-pill text-bg-info">
+                        <span>{{ getCantDeProducto(p) }} x ${{ p.precio }}</span>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center badge rounded-pill text-bg-warning mt-4">
+                    <span>Total: ${{ total }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

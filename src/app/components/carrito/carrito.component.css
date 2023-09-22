@@ -1,0 +1,60 @@
+.title {
+    margin: 0 auto;
+    width: 100%;
+    font-family: 'Poppins', sans-serif;
+    font-size: 3rem;
+    text-transform: uppercase;
+    background-color: #F15152;
+    color: #F4F3EE;
+    padding: 2rem;
+}
+
+.product-img {
+    margin: 0 auto;
+    width: 110px;
+    height: 70px;
+}
+
+.figure {
+    margin: 0 1rem;
+}
+
+.delete-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2rem;
+    width: 2rem;
+}
+
+.increment, .decrement {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2rem;
+    height: 2rem;
+}
+
+.decrement {
+    border-radius: 30% 0 0 30%;
+}
+
+.increment {
+    border-radius: 0 30% 30% 0;
+}
+
+.prod-count {
+    font-size: 0.8rem;
+    padding: 0.3rem 0.75rem; 
+    border: none;
+}
+
+.card-title {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.rounded-pill {
+    padding: 0.8rem 1.2rem;
+    font-size: 0.8rem;
+}

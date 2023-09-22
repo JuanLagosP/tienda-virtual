@@ -12,27 +12,7 @@ export class ListarProductosComponent implements OnInit, OnDestroy {
   productos: any[] = [];
 
   constructor(private _productosService: ProductosService) {
-    /*
-    this.subscription = this._productosService.getProductos().subscribe(
-      producto => {
-        this.productos.push(producto)    
-      }
-    );
-    */
 
-    /*
-    this.subscription = this._productosService.getProdModificado().subscribe(
-      pMod => {
-        this.productos.forEach(producto => {
-          if (producto.id === pMod.id) {
-            producto.descripcion = pMod.descripcion;
-            producto.precio = pMod.precio;
-            producto.disponibilidad = pMod.disponibilidad;
-          }
-        })
-      }
-    );
-    */
   }
 
   eliminar(id: number) {
@@ -41,7 +21,7 @@ export class ListarProductosComponent implements OnInit, OnDestroy {
       this._productosService.actualizarID(id);
     }
   }
-  
+
   ngOnInit(): void {
     this.productos = this._productosService.getProductos();
   }
@@ -49,9 +29,9 @@ export class ListarProductosComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     //this.subscription.unsubscribe();
   }
-  
+
   seleccionar(producto: any) {
     this._productosService.seleccionarProducto(producto);
   }
-  
+
 }

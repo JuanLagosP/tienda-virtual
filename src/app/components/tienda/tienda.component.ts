@@ -1,6 +1,5 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ProductosService } from 'src/app/services/productos.service';
-import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,56 +7,18 @@ import { Router } from '@angular/router';
   templateUrl: './tienda.component.html',
   styleUrls: ['./tienda.component.css']
 })
-export class TiendaComponent implements OnInit, OnDestroy {
-  imagen: string = '';
-  contProducto: number;
-  productos: Map<any, boolean> = new Map();
+export class TiendaComponent implements OnInit {
+  productos: any[] = [];
+  numProductos: number;
+  flag: boolean  = false;
 
   constructor(private _productosService: ProductosService, private _router: Router) {
-    this.contProducto = 1;
-  }
-
-  incrementar(producto: any): void {
-    if (this.contProducto >= 1 && this.contProducto < producto.disponibilidad) {
-      this.contProducto++;
-    }  
-  }
-
-  disminuir(producto: any): void {
-    if (this.contProducto > 1 && this.contProducto <= producto.disponibilidad)
-    this.contProducto--;
-  }
-
-  prodSeleccionado(producto: any): void {
-    if (this.productos.get(producto) === false) {
-      this.productos.set(producto, true);
-    } else {
-      this.productos.set(producto, false);
-    }
-  }
-
-  getProductos(): any {
-    return Array.from(this.productos.keys());
-  }
-
-  ngOnInit(): void {
-    this._productosService.getProductos().forEach(producto => {
-      this.productos.set(producto, false);
-    });
-  }
-
-  ngOnDestroy(): void {
-    /*
-    this.subscription.unsubscribe();
-    */
-  }
-
-  mostrarProd(): void {
-    console.log(this.productos);
+    this.productos = this._productosService.getProductos();
+    this.numProductos = Array.from(this._productosService.getCarrito().values()).reduce((a, b) => a + b, 0);
   }
 
   admin(): void {
-    this._router.navigate(['/admin']);
+    this._router.navigate(['/admin'])
   }
 
   carrito(): void {
@@ -65,6 +26,12 @@ export class TiendaComponent implements OnInit, OnDestroy {
   }
 
   agregarAlCarrito(producto: any): void {
-    this._productosService.agregarAlCarrito(producto, this.contProducto);
+    this._productosService.agregarAlCarrito(producto);
+    this.numProductos = Array.from(this._productosService.getCarrito().values()).reduce((a, b) => a + b, 0);
+    alert('¡Producto agregado con éxito!');
   }
+
+  ngOnInit(): void {
+  }
+
 }
